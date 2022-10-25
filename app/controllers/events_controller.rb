@@ -47,9 +47,8 @@ class EventsController < ApplicationController
   end
 
   def query
-    ref = params[:ref]
-
-    events_query = Event.where(ref: ref)
+    events_query = Event
+    events_query = events_query.where(ref: params[:ref]) if params[:ref].present?
     events_query = events_query.where(name: params[:event]) if params[:event].present?
     # events_query = events_query.joins(:url).where(:url => {:host => 'teemill.com' })
 
