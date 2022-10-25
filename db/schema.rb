@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_18_184830) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_25_175638) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -21,4 +21,19 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_18_184830) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "urls", force: :cascade do |t|
+    t.string "host"
+    t.string "path"
+    t.string "port"
+    t.string "query"
+    t.string "path_part_1"
+    t.string "path_part_2"
+    t.string "path_part_3"
+    t.bigint "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_urls_on_event_id"
+  end
+
+  add_foreign_key "urls", "events"
 end
