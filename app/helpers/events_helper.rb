@@ -2,7 +2,7 @@ module EventsHelper
   def is_property_safe(property)
     return true if !property
 
-    ['host', 'port', 'path_part_1', 'created_at'].include?(property)
+    ['host', 'port', 'path', 'path_part_1', 'path_part_2', 'path_part_3', 'created_at'].include?(property)
   end
 
   def is_relation_safe(relation)
@@ -26,17 +26,18 @@ module EventsHelper
     if is_relation_safe(relation) && is_property_safe(property)
       if relation
         query = query.joins(relation.to_sym)
+        relation = nil
       else 
-        relation = 'events'
+        relation = 'events.'
       end
 
       query = query.where(:url => {property => value}) if operator == '='
-      query = query.where("#{relation}.#{property} LIKE ?", "%#{value}%") if operator == '*='
-      query = query.where("#{relation}.#{property} LIKE ?", "#{value}%") if operator == '^='
-      query = query.where("#{relation}.#{property} LIKE ?", "%#{value}") if operator == '$='
-      query = query.where("#{relation}.#{property} ~ ?", value) if operator == '~='
-      query = query.where("#{relation}.#{property} > ?", value) if operator == '>'
-      query = query.where("#{relation}.#{property} < ?", value) if operator == '<'
+      query = query.where("#{relation}#{property} LIKE ?", "%#{value}%") if operator == '*='
+      query = query.where("#{relation}#{property} LIKE ?", "#{value}%") if operator == '^='
+      query = query.where("#{relation}#{property} LIKE ?", "%#{value}") if operator == '$='
+      query = query.where("#{relation}#{property} ~ ?", value) if operator == '~='
+      query = query.where("#{relation}#{property} > ?", value) if operator == '>'
+      query = query.where("#{relation}#{property} < ?", value) if operator == '<'
     end
 
     query
