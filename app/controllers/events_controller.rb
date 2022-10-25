@@ -30,9 +30,9 @@ class EventsController < ApplicationController
       :port => uri.port,
       :path => uri.path,
       :query => uri.query,
-      :pathPart1 => nil,
-      :pathPart2 => nil,
-      :pathPart3 => nil 
+      :path_part_1 => nil,
+      :path_part_2 => nil,
+      :path_part_3 => nil 
     }
 
     # fill the pathPart properties with available data
@@ -40,9 +40,41 @@ class EventsController < ApplicationController
 
     i = 0
     while i < [path_parts.length, 3].min do
-      parts["pathPart#{i + 1}"] = path_parts[i]
+      parts["path_part_#{i + 1}"] = path_parts[i]
       i += 1
     end
     parts
+  end
+
+  def query
+    ref = params[:ref]
+
+    events_query = Event.where(ref: ref)
+    events_query = events_query.where(name: params[:event]) if params[:event].present?
+    # events_query = events_query.joins(:url).where(:url => {:host => 'teemill.com' })
+
+    if params[:filter].present?
+      params[:filter].each do |filter|
+        events_query = helpers.filter_query(events_query, filter)
+      end
+    end
+
+    render_query(events_query)
+  end
+
+  def render_query(events_query)
+    if !params[:format].present? || params[:format] == 'json'
+      render json: events_query.to_json(
+        :include => {
+          :url => {
+            :except => [:created_at, :updated_at, :id, :event_id]
+          }
+        },
+        :except => [:id]
+      ) 
+    end
+    render xml: events_query if params[:format] == 'xml'
+    render json: events_query.exists? if params[:format] == 'bool'
+    render json: events_query.count if params[:format] == 'count'
   end
 end

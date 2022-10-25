@@ -5,10 +5,9 @@ class CreateUrls < ActiveRecord::Migration[7.0]
       t.string :path
       t.string :port
       t.string :query
-      t.string :pathPart1
-      t.string :string
-      t.string :pathPart2
-      t.string :pathPart3
+      t.string :path_part_1
+      t.string :path_part_2
+      t.string :path_part_3
 
       t.belongs_to :event, foreign_key: true
 

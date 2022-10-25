@@ -26,10 +26,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_25_175638) do
     t.string "path"
     t.string "port"
     t.string "query"
-    t.string "pathPart1"
-    t.string "string"
-    t.string "pathPart2"
-    t.string "pathPart3"
+    t.string "path_part_1"
+    t.string "path_part_2"
+    t.string "path_part_3"
     t.bigint "event_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
