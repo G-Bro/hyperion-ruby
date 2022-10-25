@@ -58,12 +58,14 @@ class EventsController < ApplicationController
       end
     end
 
+    events_query = events_query.includes(:url)
+
     render_query(events_query)
   end
 
   def render_query(events_query)
     if !params[:format].present? || params[:format] == 'json'
-      render json: events_query.to_json(
+      render json: events_query.limit(params[:limit] || 100).to_json(
         :include => {
           :url => {
             :except => [:created_at, :updated_at, :id, :event_id]
