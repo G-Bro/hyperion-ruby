@@ -1,11 +1,15 @@
 class EventsController < ApplicationController
   # this is the access point handler
   def track
-    # e = Event.new(track_validated_params)
-    # e.save
+    event = Event.new(track_validated_params)
+    event.save
 
     # render json: e
-    render json: uri_parts
+    url = Url.new(uri_parts)
+    url.event = event
+    url.save
+    
+    render json: event
   end
 
   # perform parameter validation
@@ -23,6 +27,7 @@ class EventsController < ApplicationController
     
     parts = {
       :host => uri.host,
+      :port => uri.port,
       :path => uri.path,
       :query => uri.query,
       :pathPart1 => nil,
