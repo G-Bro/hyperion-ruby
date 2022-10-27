@@ -1,24 +1,13 @@
-# README
+# Hyperion
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Hyperion is an event tracking and querying API for keeping track of what your users have and haven't done, and monitoring user behaviour
 
-Things you may want to cover:
+## Getting started
 
-* Ruby version
+`. install.sh`
 
-* System dependencies
+Install the dev kit. This will only install the dev kit for your current shell session.
 
-* Configuration
+`hyp start`
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+This will initialise the docker containers. The application will be available at `http://localhost:3000`, and a database admin will be available at `http://localhost:5050`

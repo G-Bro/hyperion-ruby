@@ -1,0 +1,1 @@
+alias "hyp=ruby dev-kit.rb"
