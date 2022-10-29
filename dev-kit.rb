@@ -1,9 +1,9 @@
-def start
-  system('docker-compose up -d')
+def start(service)
+  system("docker-compose up -d #{service}")
 end
 
-def stop
-  system('docker-compose down')
+def stop(service)
+  system("docker-compose stop #{service}")
 end
 
 def install(package, version)
@@ -31,7 +31,7 @@ def rails(args)
   system("docker-compose run web #{cmd}")
 end
 
-start if ARGV[0] === 'start'
-stop if ARGV[0] === 'stop'
+start(ARGV[1]) if ARGV[0] === 'start'
+stop(ARGV[1]) if ARGV[0] === 'stop'
 install(ARGV[1], ARGV[2]) if ARGV[0] == 'install'
 rails(ARGV) if ARGV[0] == 'rails'
