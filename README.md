@@ -14,7 +14,9 @@ Hyperion is built with:
 
 ## Dev kit
 
-`. install.sh`
+```sh
+. install.sh
+```
 
 Install the dev kit. This will only install the dev kit for your current shell session. If you would like to define it permanently add `"alias hyp=ruby <install_path>/dev-kit/dev_kit.rb"` to your .bashrc or .zshrc file
 
