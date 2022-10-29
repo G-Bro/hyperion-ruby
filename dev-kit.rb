@@ -2,6 +2,10 @@ def start
   system('docker-compose up -d')
 end
 
+def stop
+  system('docker-compose down')
+end
+
 def install(package, version)
   return system('docker-compose build web') if !package
 
@@ -28,5 +32,6 @@ def rails(args)
 end
 
 start if ARGV[0] === 'start'
+stop if ARGV[0] === 'stop'
 install(ARGV[1], ARGV[2]) if ARGV[0] == 'install'
 rails(ARGV) if ARGV[0] == 'rails'
