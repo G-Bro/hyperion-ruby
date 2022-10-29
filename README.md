@@ -2,7 +2,7 @@
 
 This app is primarily written in Ruby. It is recommended you use [rbenv](https://github.com/rbenv/rbenv)
 
-Hyperion is an event tracking and querying API for keeping track of what your users have and haven't done, and monitoring user behaviour
+Hyperion is an event tracking and querying API for keeping track of user behaviour. Hyperion is not for tracking Personally Identifiable Information
 
 Hyperion is built with:
 * [Rails](https://rubyonrails.org/) - MVC framework
@@ -30,3 +30,7 @@ hyp rails db:migrate
 Run all DB migrations
 
 For a full list of available commands in the dev kit, run `hyp help`
+
+### ENV
+
+ENV variables are stored in `/config/application.yml`. Copy the contents of `/config/application.example.yml` and adjust accordingly
