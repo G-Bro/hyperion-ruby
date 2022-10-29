@@ -12,7 +12,7 @@ Hyperion is built with:
 
 `. install.sh`
 
-Install the dev kit. This will only install the dev kit for your current shell session.
+Install the dev kit. This will only install the dev kit for your current shell session. If you would like to define it permanently add `"alias hyp=ruby <install_path>/dev-kit/dev_kit.rb"` to your .bashrc or .zshrc file
 
 `hyp start <service>`
 
@@ -29,3 +29,7 @@ Installs all dependencies within the docker container. If a package name is prov
 `hyp rails <rails command>`
 
 Runs a rails command inside the docker container
+
+`hyp help`
+
+Lists all other available commands

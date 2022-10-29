@@ -1,1 +1,1 @@
-alias "hyp=ruby dev-kit.rb"
+alias "hyp=ruby ${PWD}/dev-kit/dev_kit.rb"
