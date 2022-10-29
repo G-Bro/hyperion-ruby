@@ -12,30 +12,23 @@ Hyperion is built with:
 * [PostgreSQL](https://www.postgresql.org/) - Database
 * [pgAdmin](https://www.pgadmin.org/) - Database inspector/interface
 
-## Dev kit
+## Getting started
 
-```sh
+```bash
 . install.sh
 ```
 
-Install the dev kit. This will only install the dev kit for your current shell session. If you would like to define it permanently add `"alias hyp=ruby <install_path>/dev-kit/dev_kit.rb"` to your .bashrc or .zshrc file
+Install the dev kit. This will only install the dev kit for your current shell session. If you would like to install it permanently add `"alias hyp=ruby <install_path>/dev-kit/dev_kit.rb"` to your .bashrc or .zshrc file
 
-`hyp start <service>`
+```bash
+hyp start
+```
 
-This will initialise the docker containers, or a specific container if one is provided. The application will be available at `http://localhost:3000`, and a database admin will be available at `http://localhost:5050`
+This will start the docker containers. The application will be available at http://localhost:3000, and a database admin will be available at http://localhost:5050
 
-`hyp stop <service>`
+```bash
+hyp rails db:migrate
+```
+Run all DB migrations
 
-This will stop all docker containers, or a specific container if one is provided.
-
-`hyp install <package-name> <version>`
-
-Installs all dependencies within the docker container. If a package name is provided it will be added to the Gemfile. Additionally, a version can be specified.
-
-`hyp rails <rails command>`
-
-Runs a rails command inside the docker container
-
-`hyp help`
-
-Lists all other available commands
+For a full list of available commands in the dev kit, run `hyp help`
