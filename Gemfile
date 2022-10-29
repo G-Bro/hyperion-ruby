@@ -65,3 +65,4 @@ gem 'tzinfo'
 gem 'rack-cors'
 
 gem 'faker'
+gem 'devise'
