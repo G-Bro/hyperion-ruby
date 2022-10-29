@@ -1,5 +1,9 @@
 # Hyperion
 
+## Prerequisites
+
+This app is primarily written in Ruby. It is recommended you use [rbenv](https://github.com/rbenv/rbenv)
+
 Hyperion is an event tracking and querying API for keeping track of what your users have and haven't done, and monitoring user behaviour
 
 Hyperion is built with:
