@@ -5,13 +5,13 @@ module PackageManager
     puts package
     gem_definition = "gem '#{package}'"
     puts gem_definition
-    if File.readlines('../Gemfile').any?{ |l| l[gem_definition] }
+    if File.readlines("#{__dir__}/../Gemfile").any?{ |l| l[gem_definition] }
       puts 'already installed'
     else
       if version
         gem_definition = "#{gem_definition}, '~> #{version}'"
       end
-      File.write('../Gemfile', "\n#{gem_definition}\n", mode: "a")
+      File.write("#{__dir__}/../Gemfile", "\n#{gem_definition}\n", mode: "a")
 
       system('docker-compose build web')
     end
