@@ -1,6 +1,8 @@
 # syntax=docker/dockerfile:1
 FROM ruby:2.7
-RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
+RUN apt-get update -qq \
+  && curl -sL https://deb.nodesource.com/setup_18.x | bash \
+  && apt-get install -y nodejs postgresql-client
 WORKDIR /myapp
 COPY Gemfile /myapp/Gemfile
 COPY Gemfile.lock /myapp/Gemfile.lock
