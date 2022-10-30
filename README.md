@@ -9,6 +9,9 @@ Hyperion is built with:
 * [devise](https://github.com/heartcombo/devise) - User authentication
 * [PostgreSQL](https://www.postgresql.org/) - Database
 * [pgAdmin](https://www.pgadmin.org/) - Database inspector/interface
+* [Vite](https://vitejs.dev/) - Frontend build tool
+* [Windi CSS](https://windicss.org/) - CSS
+* [Inertia JS](https://inertiajs.com/) - Routing
 
 ## Getting started
 

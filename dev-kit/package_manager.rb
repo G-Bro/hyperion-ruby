@@ -32,4 +32,9 @@ module PackageManager
       },
     }
   end
+
+  def npm_install(*packages)
+    package = packages.join(' ')
+    return system("docker-compose run frontend npm install #{package}")
+  end
 end

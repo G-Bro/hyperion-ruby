@@ -68,3 +68,5 @@ gem 'faker'
 gem 'devise'
 gem 'figaro'
 gem 'vite_rails'
+
+gem 'inertia_rails'

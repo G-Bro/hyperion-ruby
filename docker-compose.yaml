@@ -9,12 +9,27 @@ services:
   web:
     build: .
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    environment:
+      RAILS_ENV: development
+      VITE_RUBY_HOST: frontend
     volumes:
       - .:/myapp
     ports:
       - "3000:3000"
     depends_on:
       - db
+      - frontend
+  frontend:
+    build: .
+    command: bash -c "npm install && bundle exec vite dev"
+    environment:
+      DEBUG: '*vite*'
+      RAILS_ENV: development
+      VITE_RUBY_HOST: 0.0.0.0
+    volumes:
+      - .:/myapp
+    ports:
+      - "3036:3036"
   pgadmin:
     container_name: hyperion_pgadmin
     image: dpage/pgadmin4
