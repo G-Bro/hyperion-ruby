@@ -1,21 +1,23 @@
 <script setup>
-import { Link } from '@inertiajs/inertia-vue3'
+import { Link } from '@inertiajs/inertia-vue3';
 
 const props = defineProps({
   href: String,
-  fill: Boolean
+  fill: Boolean,
+  type: String,
 })
 </script>
 
 <template>
-  <Link
+  <component :is="type === 'submit' ? 'input' : 'Link'"
     :href="href"
     class="hyp-button"
     :class="{ fill }"
+    :type="type"
   >
     <slot>
     </slot>
-  </Link>
+  </component>
 </template>
 
 <style scoped>
@@ -31,6 +33,7 @@ const props = defineProps({
     shadow-sm
     shadow-dark-500
     inline-block
+    cursor-pointer
 }
 
 .hyp-button.fill {
