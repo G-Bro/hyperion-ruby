@@ -1,17 +1,19 @@
 <template>
   <Layout>
     <template #default>
-      <h1>Hello from Vue</h1>
-      <p>{{swag}}</p>
+      <hyp-button href="/test">Content</hyp-button>
     </template>
   </Layout>
 </template>
 
 <script>
 import Layout from '~/Layouts/Dashboard.vue';
+import HypButton from '~/components/HypButton.vue';
+
 export default {
   components: {
     Layout,
+    HypButton,
   },
   data() {
     return {

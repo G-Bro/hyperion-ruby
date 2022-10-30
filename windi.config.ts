@@ -5,6 +5,11 @@ export default defineConfig({
   theme: {
     fontFamily: {
       sans: ['Fira Sans', 'sans-serif']
-    }
+    },
+    extend: {
+      colors: {
+        primary: colors.indigo
+      }
+    },
   }
 })
