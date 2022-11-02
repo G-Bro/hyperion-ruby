@@ -1,3 +1,7 @@
+<script setup>
+
+</script>
+
 <template>
   <div class="layout-grid text-white">
     <div class="header p-5 bg-dark-900 font-bold">
@@ -11,10 +15,6 @@
     </div>
   </div>
 </template>
-
-<script>
-
-</script>
 
 <style scoped>
 .layout-grid {
