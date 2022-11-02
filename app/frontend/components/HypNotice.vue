@@ -12,7 +12,7 @@ defineProps({
     :class="type"
     v-for="message in error"
   >
-    {{ variable }} {{ message }}
+    {{ isNaN(variable) ? variable : null }} {{ message }}
   </p>
 </template>
 

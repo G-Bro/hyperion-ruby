@@ -28,13 +28,20 @@ function onSubmit(event) {
       data: props.formData,
     }).then(
       (response) => {
-        if (response.data.errors) {
-          errors.value = response.data.errors;
+        console.log(response);
+        if (response.data.validation_errors) {
+          errors.value = response.data.validation_errors;
         }
         if (response.data.flash) {
           flashes.value = response.data.flash;
         }
         emit('ajaxResponse', response);
+      }
+    ).catch(
+      ({ response }) => {
+        if (response.data.errors) {
+          errors.value = [response.data.errors];
+        }
       }
     );
   }

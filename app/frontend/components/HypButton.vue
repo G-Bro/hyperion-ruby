@@ -24,6 +24,8 @@ const props = defineProps({
     class="hyp-button"
     :class="{ fill }"
     :type="type"
+    as="button"
+    type="button"
   >
     <slot>
       {{ text }}
