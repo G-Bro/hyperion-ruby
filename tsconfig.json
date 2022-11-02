@@ -6,20 +6,26 @@
     "esModuleInterop": true,
     "strict": true,
     "strictNullChecks": true,
-    "moduleResolution": "Node",
+    "moduleResolution": "node",
     "resolveJsonModule": true,
     "skipLibCheck": true,
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["./app/javascript/*"],
-      "~/*": ["./app/javascript/*"]
+      "@/*": ["./app/frontend/*"],
+      "~/*": ["./app/frontend/*"]
     },
     "types": [
-      "Node"
-    ]
+      "vite/client",
+      "vue"
+    ],
+    "isolatedModules": true,
   },
   "exclude": [
     "**/dist",
     "**/node_modules",
     "**/test"
-  ]
+  ],
+  "include": [
+    "./app/frontend"
+  ],
 }
