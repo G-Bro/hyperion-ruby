@@ -5,19 +5,30 @@ const props = defineProps({
   href: String,
   fill: Boolean,
   type: String,
+  text: String,
 })
 </script>
 
 <template>
-  <component :is="type === 'submit' ? 'input' : 'Link'"
+  <input
+    v-if="type === 'submit'"
+    :href="href"
+    class="hyp-button"
+    :class="{ fill }"
+    type="submit"
+    :value="text"
+  />
+  <Link
+    v-else
     :href="href"
     class="hyp-button"
     :class="{ fill }"
     :type="type"
   >
     <slot>
+      {{ text }}
     </slot>
-  </component>
+  </Link>
 </template>
 
 <style scoped>
